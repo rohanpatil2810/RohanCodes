@@ -1,0 +1,28 @@
+package info.main;
+import java.util.Scanner;
+
+public class TestApp {
+    public static void main(String[] args)
+            throws ClassNotFoundException, InstantiationException, IllegalAccessException {
+        Scanner scanner = new Scanner(System.in);
+        System.out.println("Enter the ClassName:");
+        String className = scanner.nextLine();
+        Class cref = Class.forName(className);
+        
+        // I want to create an object for the Product class
+        // dynamically
+        Object o = cref.newInstance();
+        // verify whether it is really a Product object or not
+        if (o instanceof Product) {
+            // down-casting
+            Product product = (Product) o;
+            product.setId(1001);
+            product.setName("Mobile");
+            product.display();
+        } else {
+            System.out.println("not");
+        }
+
+    }
+
+}
